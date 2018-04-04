@@ -29,7 +29,7 @@ namespace ProgrammaMaker
             comboBox1.Items.Add("Verkenners");
             comboBox1.Items.Add("Gidsen");
             comboBox1.Items.Add("Explorers");
-            comboBox1.Items.Add("Pivo's");
+            comboBox1.Items.Add("Pivo");
             comboBox1.Items.Add("Plusscouts Jr");
             comboBox1.Items.Add("Plusscouts Sr");
             comboBox1.Items.Add("Scouting");
@@ -123,7 +123,7 @@ namespace ProgrammaMaker
                     dateTimePicker1.Value = new System.DateTime(2000, 01, 01, 19, 30, 00);
                     dateTimePicker2.Value = new System.DateTime(2000, 01, 01, 21, 30, 00);
                     break;
-                case "Pivo's":
+                case "Pivo":
                     enableFields();
                     comboBox2.SelectedItem = "Vrijdag";
                     dateTimePicker1.Value = new System.DateTime(2000, 01, 01, 19, 30, 00);
@@ -314,13 +314,14 @@ namespace ProgrammaMaker
                 {
                     StreamWriter writer = new StreamWriter(saveFileDialog1.OpenFile());
                     writer.WriteLine("\"Title\",\"Startdate\",\"Enddate\",\"Start\",\"End\",\"Category\"");
-                   /* for (int i = 0; i < listBox1.Items.Count; i++)
-
+                    for (int i = 0; i < dataGridView1.Rows.Count - 1; ++ i)
                     {
-
-                        writer.WriteLine(listBox1.Items[i].ToString());
-
-                    }*/
+                        for (int j = 0; j <= dataGridView1.Columns.Count - 2; ++ j)
+                        {
+                            writer.Write("\"" + dataGridView1[j, i].Value.ToString() + "\",");
+                        }
+                        writer.WriteLine("\"" + dataGridView1[dataGridView1.Columns.Count - 1, i].Value.ToString() + "\"");
+                    }
 
                     writer.Dispose();
 
