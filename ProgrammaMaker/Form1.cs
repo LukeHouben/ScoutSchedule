@@ -1,12 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ProgrammaMaker
@@ -30,8 +24,8 @@ namespace ProgrammaMaker
             comboBox1.Items.Add("Gidsen");
             comboBox1.Items.Add("Explorers");
             comboBox1.Items.Add("Pivo");
-            comboBox1.Items.Add("Plusscouts Jr");
-            comboBox1.Items.Add("Plusscouts Sr");
+            comboBox1.Items.Add("+Scouts jr");
+            comboBox1.Items.Add("+Scouts sr");
             comboBox1.Items.Add("Scouting");
             comboBox1.Items.Add("Verhuur");
         }
@@ -45,11 +39,6 @@ namespace ProgrammaMaker
             comboBox2.Items.Add("Vrijdag");
             comboBox2.Items.Add("Zaterdag");
             comboBox2.Items.Add("Zondag");
-        }
-
-        private void fileToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void newToolStripMenuItem_Click(object sender, EventArgs e)
@@ -69,16 +58,6 @@ namespace ProgrammaMaker
         }
 
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label4_Click(object sender, EventArgs e)
         {
 
         }
@@ -167,9 +146,7 @@ namespace ProgrammaMaker
         }
 
         private void button1_Click(object sender, EventArgs e)
-        {
-            
-            
+        {        
             if (checkNoFieldEmpty())
             {
                 disableFields();
@@ -238,33 +215,21 @@ namespace ProgrammaMaker
             {
                 case "Monday":
                     return 0;
-                    break;
                 case "Tuesday":
                     return 1;
-                    break;
                 case "Wednesday":
                     return 2;
-                    break;
                 case "Thursday":
                     return 3;
-                    break;
                 case "Friday":
                     return 4;
-                    break;
                 case "Saturday":
                     return 5;
-                    break;
                 case "Sunday":
                     return 6;
-                    break;
                 default:
-                    return -1;
+                    throw new InvalidDataException("Ongeldige dag in getDayIndex(), laat dit weten aan Luke Houben!");
             }
-        }
-
-        private void label5_Click(object sender, EventArgs e)
-        {
-
         }
 
         private Boolean checkNoFieldEmpty()
@@ -291,11 +256,6 @@ namespace ProgrammaMaker
             return correct;
         }
 
-        private void numericUpDown1_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void reporteerEenFoutToolStripMenuItem_Click(object sender, EventArgs e)
         {
             System.Diagnostics.Process.Start("https://github.com/Lukkie1998/ScoutSchedule/issues");
@@ -304,8 +264,8 @@ namespace ProgrammaMaker
         private void button2_Click(object sender, EventArgs e)
         {
             SaveFileDialog saveFileDialog1 = new SaveFileDialog();
-            saveFileDialog1.FileName = comboBox1.SelectedItem.ToString() + "_" + Decimal.ToInt32(numericUpDown1.Value)
-                                                                        + "_weken";
+            saveFileDialog1.FileName = comboBox1.SelectedItem.ToString() + "_" + 
+                Decimal.ToInt32(numericUpDown1.Value) + "_weken";
             saveFileDialog1.Filter = "CSV Bestand|*.csv";
             saveFileDialog1.Title = "Sla CSV bestand op als...";
             if (saveFileDialog1.ShowDialog() == DialogResult.OK)
@@ -324,10 +284,16 @@ namespace ProgrammaMaker
                     }
 
                     writer.Dispose();
-
                     writer.Close();
+                    Information info = new Information(true);
+                    info.ShowDialog();
                 }
             }
-        }   
+        }
+
+        private void uploadToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://www.scoutingstein.nl/wp-admin/edit.php?post_type=tribe_events&page=aggregator");
+        }
     }
 }
