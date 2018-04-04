@@ -280,9 +280,23 @@ namespace ProgrammaMaker
                     {
                         for (int j = 0; j <= dataGridView1.Columns.Count - 2; ++ j)
                         {
-                            writer.Write("\"" + dataGridView1[j, i].Value.ToString() + "\",");
+                            try
+                            {
+                                writer.Write("\"" + dataGridView1[j, i].Value.ToString() + "\",");
+                            }
+                            catch (NullReferenceException)
+                            {
+                                writer.Write("\"\",");
+                            }
                         }
-                        writer.WriteLine("\"" + dataGridView1[dataGridView1.Columns.Count - 1, i].Value.ToString() + "\"");
+                        try
+                        {
+                            writer.WriteLine("\"" + dataGridView1[dataGridView1.Columns.Count - 1, i].Value.ToString() + "\"");
+                        }
+                        catch (NullReferenceException)
+                        {
+                            writer.WriteLine("\"\"");
+                        }
                     }
 
                     writer.Dispose();
