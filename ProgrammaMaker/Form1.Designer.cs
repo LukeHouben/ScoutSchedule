@@ -360,7 +360,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.MinimumSize = new System.Drawing.Size(635, 405);
             this.Name = "Form1";
-            this.Text = "Scouting Programma";
+            this.Text = "ScoutSchedule";
             this.panel1.ResumeLayout(false);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
