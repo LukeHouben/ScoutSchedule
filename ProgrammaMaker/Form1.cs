@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -303,16 +304,29 @@ namespace ProgrammaMaker
         private void button2_Click(object sender, EventArgs e)
         {
             SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+            saveFileDialog1.FileName = comboBox1.SelectedItem.ToString() + "_" + Decimal.ToInt32(numericUpDown1.Value)
+                                                                        + "_weken";
             saveFileDialog1.Filter = "CSV Bestand|*.csv";
             saveFileDialog1.Title = "Sla CSV bestand op als...";
-            saveFileDialog1.ShowDialog();
-
-            if (saveFileDialog1.FileName != "")
+            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
             {
-                // Saves the Image via a FileStream created by the OpenFile method.  
-                System.IO.FileStream fs =
-                   (System.IO.FileStream)saveFileDialog1.OpenFile();
+                if (saveFileDialog1.FileName != "")
+                {
+                    StreamWriter writer = new StreamWriter(saveFileDialog1.OpenFile());
+                    writer.WriteLine("\"Title\",\"Startdate\",\"Enddate\",\"Start\",\"End\",\"Category\"");
+                   /* for (int i = 0; i < listBox1.Items.Count; i++)
+
+                    {
+
+                        writer.WriteLine(listBox1.Items[i].ToString());
+
+                    }*/
+
+                    writer.Dispose();
+
+                    writer.Close();
+                }
             }
-        }
+        }   
     }
 }
