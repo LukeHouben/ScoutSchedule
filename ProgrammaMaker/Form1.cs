@@ -44,6 +44,7 @@ namespace ProgrammaMaker
         private void newToolStripMenuItem_Click(object sender, EventArgs e)
         {
             enableFields();
+            button2.Enabled = false;
             dataGridView1.RowCount = 1;
             for (int i = 0; i < dataGridView1.Columns.Count; ++ i)
             {
@@ -148,8 +149,9 @@ namespace ProgrammaMaker
         private void button1_Click(object sender, EventArgs e)
         {        
             if (checkNoFieldEmpty())
-            {
+            {   
                 disableFields();
+                button2.Enabled = true;
                 int weeks = Decimal.ToInt32(numericUpDown1.Value - 1);
                 if (weeks > 0)
                 {
