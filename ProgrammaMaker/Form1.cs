@@ -110,10 +110,9 @@ namespace ProgrammaMaker
                     dateTimePicker2.Value = new System.DateTime(2000, 01, 01, 21, 30, 00);
                     break;
                 default:
-                    comboBox2.Enabled = false;
-                    dateTimePicker1.Enabled = false;
-                    dateTimePicker2.Enabled = false;
-                    checkBox1.Enabled = false;
+                    comboBox2.SelectedItem = "Zaterdag";
+                    dateTimePicker1.Value = new System.DateTime(2000, 01, 01, 12, 00, 00);
+                    dateTimePicker2.Value = new System.DateTime(2000, 01, 01, 17, 00, 00);
                     break;
             }
         }

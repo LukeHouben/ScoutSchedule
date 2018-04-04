@@ -30,11 +30,16 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.uploadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.informatieToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.reporteerEenFoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label1 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -45,23 +50,18 @@
             this.label4 = new System.Windows.Forms.Label();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.button2 = new System.Windows.Forms.Button();
-            this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.informatieToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.reporteerEenFoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.label5 = new System.Windows.Forms.Label();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.Title = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Startdate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Enddate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Start = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.End = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Category = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
-            this.label5 = new System.Windows.Forms.Label();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.uploadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1.SuspendLayout();
-            this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -75,6 +75,24 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(459, 314);
             this.panel1.TabIndex = 0;
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Title,
+            this.Startdate,
+            this.Enddate,
+            this.Start,
+            this.End,
+            this.Category});
+            this.dataGridView1.Location = new System.Drawing.Point(3, 3);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(453, 308);
+            this.dataGridView1.TabIndex = 0;
             // 
             // menuStrip1
             // 
@@ -101,14 +119,14 @@
             // newToolStripMenuItem
             // 
             this.newToolStripMenuItem.Name = "newToolStripMenuItem";
-            this.newToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.newToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
             this.newToolStripMenuItem.Text = "Nieuw";
             this.newToolStripMenuItem.Click += new System.EventHandler(this.newToolStripMenuItem_Click);
             // 
             // openToolStripMenuItem
             // 
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
             this.openToolStripMenuItem.Text = "Open";
             this.openToolStripMenuItem.Visible = false;
             this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
@@ -116,10 +134,40 @@
             // saveToolStripMenuItem
             // 
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
             this.saveToolStripMenuItem.Text = "Opslaan";
             this.saveToolStripMenuItem.Visible = false;
             this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
+            // 
+            // uploadToolStripMenuItem
+            // 
+            this.uploadToolStripMenuItem.Name = "uploadToolStripMenuItem";
+            this.uploadToolStripMenuItem.Size = new System.Drawing.Size(57, 20);
+            this.uploadToolStripMenuItem.Text = "Upload";
+            this.uploadToolStripMenuItem.Click += new System.EventHandler(this.uploadToolStripMenuItem_Click);
+            // 
+            // helpToolStripMenuItem
+            // 
+            this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.informatieToolStripMenuItem,
+            this.reporteerEenFoutToolStripMenuItem});
+            this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
+            this.helpToolStripMenuItem.Text = "Help";
+            // 
+            // informatieToolStripMenuItem
+            // 
+            this.informatieToolStripMenuItem.Name = "informatieToolStripMenuItem";
+            this.informatieToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
+            this.informatieToolStripMenuItem.Text = "Informatie";
+            this.informatieToolStripMenuItem.Click += new System.EventHandler(this.informatieToolStripMenuItem_Click);
+            // 
+            // reporteerEenFoutToolStripMenuItem
+            // 
+            this.reporteerEenFoutToolStripMenuItem.Name = "reporteerEenFoutToolStripMenuItem";
+            this.reporteerEenFoutToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
+            this.reporteerEenFoutToolStripMenuItem.Text = "Raporteer een fout";
+            this.reporteerEenFoutToolStripMenuItem.Click += new System.EventHandler(this.reporteerEenFoutToolStripMenuItem_Click);
             // 
             // label1
             // 
@@ -224,77 +272,6 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // helpToolStripMenuItem
-            // 
-            this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.informatieToolStripMenuItem,
-            this.reporteerEenFoutToolStripMenuItem});
-            this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
-            this.helpToolStripMenuItem.Text = "Help";
-            // 
-            // informatieToolStripMenuItem
-            // 
-            this.informatieToolStripMenuItem.Name = "informatieToolStripMenuItem";
-            this.informatieToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
-            this.informatieToolStripMenuItem.Text = "Informatie";
-            this.informatieToolStripMenuItem.Click += new System.EventHandler(this.informatieToolStripMenuItem_Click);
-            // 
-            // reporteerEenFoutToolStripMenuItem
-            // 
-            this.reporteerEenFoutToolStripMenuItem.Name = "reporteerEenFoutToolStripMenuItem";
-            this.reporteerEenFoutToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
-            this.reporteerEenFoutToolStripMenuItem.Text = "Raporteer een fout";
-            this.reporteerEenFoutToolStripMenuItem.Click += new System.EventHandler(this.reporteerEenFoutToolStripMenuItem_Click);
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Title,
-            this.Startdate,
-            this.Enddate,
-            this.Start,
-            this.End,
-            this.Category});
-            this.dataGridView1.Location = new System.Drawing.Point(3, 3);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(453, 308);
-            this.dataGridView1.TabIndex = 0;
-            // 
-            // Title
-            // 
-            this.Title.HeaderText = "Programma";
-            this.Title.Name = "Title";
-            // 
-            // Startdate
-            // 
-            this.Startdate.HeaderText = "Begindatum";
-            this.Startdate.Name = "Startdate";
-            // 
-            // Enddate
-            // 
-            this.Enddate.HeaderText = "Einddatum";
-            this.Enddate.Name = "Enddate";
-            // 
-            // Start
-            // 
-            this.Start.HeaderText = "Starttijd";
-            this.Start.Name = "Start";
-            // 
-            // End
-            // 
-            this.End.HeaderText = "Eindtijd";
-            this.End.Name = "End";
-            // 
-            // Category
-            // 
-            this.Category.HeaderText = "Speltak";
-            this.Category.Name = "Category";
-            // 
             // numericUpDown1
             // 
             this.numericUpDown1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -330,12 +307,36 @@
             this.checkBox1.Text = "Voorspel datums";
             this.checkBox1.UseVisualStyleBackColor = true;
             // 
-            // uploadToolStripMenuItem
+            // Title
             // 
-            this.uploadToolStripMenuItem.Name = "uploadToolStripMenuItem";
-            this.uploadToolStripMenuItem.Size = new System.Drawing.Size(57, 20);
-            this.uploadToolStripMenuItem.Text = "Upload";
-            this.uploadToolStripMenuItem.Click += new System.EventHandler(this.uploadToolStripMenuItem_Click);
+            this.Title.HeaderText = "Programma";
+            this.Title.Name = "Title";
+            // 
+            // Startdate
+            // 
+            this.Startdate.HeaderText = "Begindatum";
+            this.Startdate.Name = "Startdate";
+            // 
+            // Enddate
+            // 
+            this.Enddate.HeaderText = "Einddatum";
+            this.Enddate.Name = "Enddate";
+            // 
+            // Start
+            // 
+            this.Start.HeaderText = "Starttijd";
+            this.Start.Name = "Start";
+            // 
+            // End
+            // 
+            this.End.HeaderText = "Eindtijd";
+            this.End.Name = "End";
+            // 
+            // Category
+            // 
+            this.Category.HeaderText = "Speltak";
+            this.Category.Name = "Category";
+            this.Category.ReadOnly = true;
             // 
             // Form1
             // 
@@ -363,9 +364,9 @@
             this.Name = "Form1";
             this.Text = "ScoutSchedule";
             this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -394,16 +395,16 @@
         private System.Windows.Forms.ToolStripMenuItem informatieToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem reporteerEenFoutToolStripMenuItem;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.ToolStripMenuItem uploadToolStripMenuItem;
         private System.Windows.Forms.DataGridViewTextBoxColumn Title;
         private System.Windows.Forms.DataGridViewTextBoxColumn Startdate;
         private System.Windows.Forms.DataGridViewTextBoxColumn Enddate;
         private System.Windows.Forms.DataGridViewTextBoxColumn Start;
         private System.Windows.Forms.DataGridViewTextBoxColumn End;
         private System.Windows.Forms.DataGridViewTextBoxColumn Category;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.CheckBox checkBox1;
-        private System.Windows.Forms.ToolStripMenuItem uploadToolStripMenuItem;
     }
 }
 
