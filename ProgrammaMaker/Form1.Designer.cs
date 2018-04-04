@@ -57,6 +57,7 @@
             this.Category = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.label5 = new System.Windows.Forms.Label();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.panel1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -219,6 +220,7 @@
             this.button2.TabIndex = 11;
             this.button2.Text = "Exporteer CSV";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // helpToolStripMenuItem
             // 
@@ -241,6 +243,7 @@
             this.reporteerEenFoutToolStripMenuItem.Name = "reporteerEenFoutToolStripMenuItem";
             this.reporteerEenFoutToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
             this.reporteerEenFoutToolStripMenuItem.Text = "Reporteer een Fout";
+            this.reporteerEenFoutToolStripMenuItem.Click += new System.EventHandler(this.reporteerEenFoutToolStripMenuItem_Click);
             // 
             // dataGridView1
             // 
@@ -316,11 +319,23 @@
             this.label5.Text = "Aantal weken:";
             this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
+            // checkBox1
+            // 
+            this.checkBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(484, 238);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(104, 17);
+            this.checkBox1.TabIndex = 14;
+            this.checkBox1.Text = "Voorspel datums";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(619, 366);
+            this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.numericUpDown1);
             this.Controls.Add(this.button2);
@@ -380,6 +395,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Category;
         private System.Windows.Forms.NumericUpDown numericUpDown1;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.CheckBox checkBox1;
     }
 }
 

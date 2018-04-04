@@ -53,7 +53,13 @@ namespace ProgrammaMaker
 
         private void newToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            enableFields();
+            dataGridView1.RowCount = 1;
+            for (int i = 0; i < dataGridView1.Columns.Count; ++ i)
+            {
+                dataGridView1[i, 0].Value = "";
+            }
+            dataGridView1.Visible = false;
         }
 
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
@@ -126,6 +132,7 @@ namespace ProgrammaMaker
                     comboBox2.Enabled = false;
                     dateTimePicker1.Enabled = false;
                     dateTimePicker2.Enabled = false;
+                    checkBox1.Enabled = false;
                     break;
             }
         }
@@ -137,6 +144,8 @@ namespace ProgrammaMaker
             dateTimePicker1.Enabled = true;
             dateTimePicker2.Enabled = true;
             numericUpDown1.Enabled = true;
+            checkBox1.Enabled = true;
+            button1.Enabled = true;
         }
 
         private void disableFields()
@@ -146,6 +155,8 @@ namespace ProgrammaMaker
             dateTimePicker1.Enabled = false;
             dateTimePicker2.Enabled = false;
             numericUpDown1.Enabled = false;
+            checkBox1.Enabled = false;
+            button1.Enabled = false;
         }
 
         private void informatieToolStripMenuItem_Click(object sender, EventArgs e)
@@ -161,18 +172,93 @@ namespace ProgrammaMaker
             if (checkNoFieldEmpty())
             {
                 disableFields();
-                button1.Enabled = false;
                 int weeks = Decimal.ToInt32(numericUpDown1.Value - 1);
-                dataGridView1.Rows.Add(weeks);
+                if (weeks > 0)
+                {
+                    dataGridView1.Rows.Add(weeks);
+                }
                 for (int i = 0; i < dataGridView1.Rows.Count; ++ i)
                 {
                     dataGridView1[3, i].Value = dateTimePicker1.Value.TimeOfDay;
                     dataGridView1[4, i].Value = dateTimePicker2.Value.TimeOfDay;
                     dataGridView1[5, i].Value = comboBox1.SelectedItem.ToString();
                 }
+                if (checkBox1.Checked)
+                {
+                    calculateDates();
+                }
                 dataGridView1.Visible = true;
+            }         
+        }
+
+
+        private void calculateDates()
+        { 
+            DateTime Today = DateTime.Today;
+            DayOfWeek day = Today.DayOfWeek;
+            int todayIndex = getDayIndex(day);
+            DateTime next = Today;
+            if (todayIndex == comboBox2.SelectedIndex)
+            {
+                for (int i = 0; i < dataGridView1.Rows.Count; ++i)
+                {
+                    next = next.AddDays(7);
+                    dataGridView1[1, i].Value = next.Date.ToString("d");
+                    dataGridView1[2, i].Value = next.Date.ToString("d");
+                }
             }
-            
+
+            if (todayIndex < comboBox2.SelectedIndex)
+            {
+                next = next.AddDays(comboBox2.SelectedIndex - todayIndex);
+                for (int i = 0; i < dataGridView1.Rows.Count; ++i)
+                {                    
+                    dataGridView1[1, i].Value = next.Date.ToString("d");
+                    dataGridView1[2, i].Value = next.Date.ToString("d");
+                    next = next.AddDays(7);
+                }
+            }
+
+            if (todayIndex > comboBox2.SelectedIndex)
+            {
+                next = next.AddDays(7 - (todayIndex - comboBox2.SelectedIndex));
+                for (int i = 0; i < dataGridView1.Rows.Count; ++i)
+                {
+                    dataGridView1[1, i].Value = next.Date.ToString("d");
+                    dataGridView1[2, i].Value = next.Date.ToString("d");
+                    next = next.AddDays(7);
+                }
+            }
+        }
+
+        private int getDayIndex(DayOfWeek today)
+        {
+            switch (today.ToString())
+            {
+                case "Monday":
+                    return 0;
+                    break;
+                case "Tuesday":
+                    return 1;
+                    break;
+                case "Wednesday":
+                    return 2;
+                    break;
+                case "Thursday":
+                    return 3;
+                    break;
+                case "Friday":
+                    return 4;
+                    break;
+                case "Saturday":
+                    return 5;
+                    break;
+                case "Sunday":
+                    return 6;
+                    break;
+                default:
+                    return -1;
+            }
         }
 
         private void label5_Click(object sender, EventArgs e)
@@ -207,6 +293,26 @@ namespace ProgrammaMaker
         private void numericUpDown1_ValueChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void reporteerEenFoutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://github.com/Lukkie1998/ScoutSchedule/issues");
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+            saveFileDialog1.Filter = "CSV Bestand|*.csv";
+            saveFileDialog1.Title = "Sla CSV bestand op als...";
+            saveFileDialog1.ShowDialog();
+
+            if (saveFileDialog1.FileName != "")
+            {
+                // Saves the Image via a FileStream created by the OpenFile method.  
+                System.IO.FileStream fs =
+                   (System.IO.FileStream)saveFileDialog1.OpenFile();
+            }
         }
     }
 }
