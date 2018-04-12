@@ -7,10 +7,12 @@ namespace ProgrammaMaker
 {
     public partial class Form1 : Form
     {
+        protected String lastFileSave;
 
         public Form1()
         {
             InitializeComponent();
+            linkLabel1.Visible = false;
             dataGridView1.Visible = false;
             addGroupsToList();
             addDaysToList();
@@ -299,12 +301,21 @@ namespace ProgrammaMaker
                         }
                     }
 
+                    lastFileSave = saveFileDialog1.FileName;
                     writer.Dispose();
                     writer.Close();
+                    setFileLink();
                     Information info = new Information(true);
                     info.ShowDialog();
                 }
             }
+        }
+
+        private void setFileLink()
+        {
+            label6.Text = "Laatst opgeslagen: ";
+            linkLabel1.Visible = true;
+            linkLabel1.Text = lastFileSave;
         }
 
         private void uploadToolStripMenuItem_Click(object sender, EventArgs e)
@@ -348,6 +359,11 @@ namespace ProgrammaMaker
             URI += "&body=Hallo, %0ADeze email bevat het programma van Speltak: " + speltak + ". %0A%0AMet vriendelijke groet, %0A" + speltak;
 
             return URI;
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            System.Diagnostics.Process.Start(lastFileSave);
         }
     }
 }
