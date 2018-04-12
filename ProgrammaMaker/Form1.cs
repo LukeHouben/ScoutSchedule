@@ -7,6 +7,7 @@ namespace ProgrammaMaker
 {
     public partial class Form1 : Form
     {
+
         public Form1()
         {
             InitializeComponent();
@@ -308,7 +309,45 @@ namespace ProgrammaMaker
 
         private void uploadToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            
+        }
+
+        private void uploadToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
             System.Diagnostics.Process.Start("https://www.scoutingstein.nl/wp-admin/edit.php?post_type=tribe_events&page=aggregator");
+        }
+
+        private void mailProgrammaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            String speltak = "";
+            try
+            {
+                speltak = comboBox1.SelectedItem.ToString();
+            } catch
+            {
+                checkNoFieldEmpty();
+                return;
+            }
+            
+            String[] emails = new String[4] { "luuk@vanmeulenbroek.nl", "arno.deblaauw@gmail.com", "a.deblaauw@grotius-lvo.nl", "rpj.ensing@gmail.com" };
+            String URI;
+            String protocol = "mailto:";
+
+            URI = generateURI(emails, speltak, protocol);
+            System.Diagnostics.Process.Start(URI);
+        }
+
+        private String generateURI(String[] emails, String speltak, String protocol)
+        {
+            String URI = protocol;
+            foreach(String email in emails) {
+                URI += email + ';';
+            }
+
+            URI += "?subject=Programma " + speltak ;
+            URI += "&body=Hallo, %0ADeze email bevat het programma van Speltak: " + speltak + ". %0A%0AMet vriendelijke groet, %0A" + speltak;
+
+            return URI;
         }
     }
 }

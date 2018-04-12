@@ -31,6 +31,12 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.panel1 = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.Title = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Startdate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Enddate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Start = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.End = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Category = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -53,12 +59,8 @@
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.label5 = new System.Windows.Forms.Label();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.Title = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Startdate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Enddate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Start = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.End = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Category = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.uploadToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.mailProgrammaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.menuStrip1.SuspendLayout();
@@ -94,6 +96,37 @@
             this.dataGridView1.Size = new System.Drawing.Size(453, 308);
             this.dataGridView1.TabIndex = 0;
             // 
+            // Title
+            // 
+            this.Title.HeaderText = "Programma";
+            this.Title.Name = "Title";
+            // 
+            // Startdate
+            // 
+            this.Startdate.HeaderText = "Begindatum";
+            this.Startdate.Name = "Startdate";
+            // 
+            // Enddate
+            // 
+            this.Enddate.HeaderText = "Einddatum";
+            this.Enddate.Name = "Enddate";
+            // 
+            // Start
+            // 
+            this.Start.HeaderText = "Starttijd";
+            this.Start.Name = "Start";
+            // 
+            // End
+            // 
+            this.End.HeaderText = "Eindtijd";
+            this.End.Name = "End";
+            // 
+            // Category
+            // 
+            this.Category.HeaderText = "Speltak";
+            this.Category.Name = "Category";
+            this.Category.ReadOnly = true;
+            // 
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -119,14 +152,14 @@
             // newToolStripMenuItem
             // 
             this.newToolStripMenuItem.Name = "newToolStripMenuItem";
-            this.newToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
+            this.newToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.newToolStripMenuItem.Text = "Nieuw";
             this.newToolStripMenuItem.Click += new System.EventHandler(this.newToolStripMenuItem_Click);
             // 
             // openToolStripMenuItem
             // 
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.openToolStripMenuItem.Text = "Open";
             this.openToolStripMenuItem.Visible = false;
             this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
@@ -134,16 +167,19 @@
             // saveToolStripMenuItem
             // 
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.saveToolStripMenuItem.Text = "Opslaan";
             this.saveToolStripMenuItem.Visible = false;
             this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
             // 
             // uploadToolStripMenuItem
             // 
+            this.uploadToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.uploadToolStripMenuItem1,
+            this.mailProgrammaToolStripMenuItem});
             this.uploadToolStripMenuItem.Name = "uploadToolStripMenuItem";
-            this.uploadToolStripMenuItem.Size = new System.Drawing.Size(57, 20);
-            this.uploadToolStripMenuItem.Text = "Upload";
+            this.uploadToolStripMenuItem.Size = new System.Drawing.Size(107, 20);
+            this.uploadToolStripMenuItem.Text = "Snelkoppelingen";
             this.uploadToolStripMenuItem.Click += new System.EventHandler(this.uploadToolStripMenuItem_Click);
             // 
             // helpToolStripMenuItem
@@ -307,36 +343,19 @@
             this.checkBox1.Text = "Voorspel datums";
             this.checkBox1.UseVisualStyleBackColor = true;
             // 
-            // Title
+            // uploadToolStripMenuItem1
             // 
-            this.Title.HeaderText = "Programma";
-            this.Title.Name = "Title";
+            this.uploadToolStripMenuItem1.Name = "uploadToolStripMenuItem1";
+            this.uploadToolStripMenuItem1.Size = new System.Drawing.Size(163, 22);
+            this.uploadToolStripMenuItem1.Text = "Upload naar site";
+            this.uploadToolStripMenuItem1.Click += new System.EventHandler(this.uploadToolStripMenuItem1_Click);
             // 
-            // Startdate
+            // mailProgrammaToolStripMenuItem
             // 
-            this.Startdate.HeaderText = "Begindatum";
-            this.Startdate.Name = "Startdate";
-            // 
-            // Enddate
-            // 
-            this.Enddate.HeaderText = "Einddatum";
-            this.Enddate.Name = "Enddate";
-            // 
-            // Start
-            // 
-            this.Start.HeaderText = "Starttijd";
-            this.Start.Name = "Start";
-            // 
-            // End
-            // 
-            this.End.HeaderText = "Eindtijd";
-            this.End.Name = "End";
-            // 
-            // Category
-            // 
-            this.Category.HeaderText = "Speltak";
-            this.Category.Name = "Category";
-            this.Category.ReadOnly = true;
+            this.mailProgrammaToolStripMenuItem.Name = "mailProgrammaToolStripMenuItem";
+            this.mailProgrammaToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
+            this.mailProgrammaToolStripMenuItem.Text = "Mail programma";
+            this.mailProgrammaToolStripMenuItem.Click += new System.EventHandler(this.mailProgrammaToolStripMenuItem_Click);
             // 
             // Form1
             // 
@@ -405,6 +424,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Start;
         private System.Windows.Forms.DataGridViewTextBoxColumn End;
         private System.Windows.Forms.DataGridViewTextBoxColumn Category;
+        private System.Windows.Forms.ToolStripMenuItem uploadToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem mailProgrammaToolStripMenuItem;
     }
 }
 
