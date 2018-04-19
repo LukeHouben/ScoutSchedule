@@ -232,7 +232,8 @@ namespace ProgrammaMaker
                     {
                         dataGridView1[1, i].Value = next.Date.ToString("d");
                         dataGridView1[2, i].Value = next.Date.ToString("d");
-                    } else if (i == dataGridView1.Rows.Count - 1)
+                    }
+                    else if (i == dataGridView1.Rows.Count - 1)
                     {
                         dataGridView1[1, dataGridView1.Rows.Count - 1].Value = next.Date.ToString("d");
                         dataGridView1[2, dataGridView1.Rows.Count - 1].Value = next.Date.ToString("d");
@@ -402,13 +403,16 @@ namespace ProgrammaMaker
         {
             dataGridView1.Rows.Add(1);
             numericUpDown1.Value++;
+
             dataGridView1[3, dataGridView1.Rows.Count - 1].Value = dateTimePicker1.Value.TimeOfDay;
             dataGridView1[4, dataGridView1.Rows.Count - 1].Value = dateTimePicker2.Value.TimeOfDay;
             dataGridView1[5, dataGridView1.Rows.Count - 1].Value = comboBox1.SelectedItem.ToString();
+
             if (checkBox1.Checked)
             {
                 calculateDates(false);
             }
+
             if (dataGridView1.RowCount > 0)
             {
                 button4.Enabled = true;
@@ -419,6 +423,7 @@ namespace ProgrammaMaker
         {
             dataGridView1.RowCount = dataGridView1.Rows.Count - 1;
             numericUpDown1.Value--;
+
             if (dataGridView1.RowCount == 0)
             {
                 button4.Enabled = false;
