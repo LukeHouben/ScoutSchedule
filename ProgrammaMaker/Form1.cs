@@ -402,22 +402,17 @@ namespace ProgrammaMaker
         {
             dataGridView1.Rows.Add(1);
             numericUpDown1.Value++;
+            dataGridView1[3, dataGridView1.Rows.Count - 1].Value = dateTimePicker1.Value.TimeOfDay;
+            dataGridView1[4, dataGridView1.Rows.Count - 1].Value = dateTimePicker2.Value.TimeOfDay;
+            dataGridView1[5, dataGridView1.Rows.Count - 1].Value = comboBox1.SelectedItem.ToString();
             if (checkBox1.Checked)
             {
-                calculateNewDates();
+                calculateDates(false);
             }
             if (dataGridView1.RowCount > 0)
             {
                 button4.Enabled = true;
             }
-        }
-
-        public void calculateNewDates()
-        {
-            dataGridView1[3, dataGridView1.Rows.Count - 1].Value = dateTimePicker1.Value.TimeOfDay;
-            dataGridView1[4, dataGridView1.Rows.Count - 1].Value = dateTimePicker2.Value.TimeOfDay;
-            dataGridView1[5, dataGridView1.Rows.Count - 1].Value = comboBox1.SelectedItem.ToString();
-            calculateDates(false);
         }
 
         private void button4_Click_1(object sender, EventArgs e)
