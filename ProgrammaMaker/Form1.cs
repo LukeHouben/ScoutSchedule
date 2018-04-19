@@ -308,7 +308,12 @@ namespace ProgrammaMaker
                 {
                     StreamWriter writer;
                     try { writer = new StreamWriter(saveFileDialog1.OpenFile()); }
-                    catch (IOException d) { Console.WriteLine(d); return; }
+                    catch (IOException d)
+                    {
+                        Information infoWrong = new Information(false, d.Message);
+                        infoWrong.ShowDialog();
+                        return;
+                    }
                     
                     writer.WriteLine("\"Title\",\"Startdate\",\"Enddate\",\"Start\",\"End\",\"Category\"");
                     for (int i = 0; i < dataGridView1.Rows.Count; ++ i)

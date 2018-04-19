@@ -12,12 +12,21 @@ namespace ProgrammaMaker
 {
     public partial class Information : Form
     {
-        public Information(bool success)
+        public Information(bool success, String message = "")
         {
             InitializeComponent();
             label1.Visible = false;
             label2.Location = new Point(20, 35);
-            label2.Text = "Succes! Uw CSV bestand is nu klaar voor upload.";
+            textBox1.Visible = false;
+            if (success)
+            {
+                label2.Text = "Succes! Uw CSV bestand is nu klaar voor upload.";
+            } else
+            {
+                label2.Text = "Error: ";
+                textBox1.Text = message;
+                textBox1.Visible = true;
+            }
             linkLabel1.Visible = false;
         }
 
@@ -28,6 +37,7 @@ namespace ProgrammaMaker
             label2.Text = "© 2018";
             label2.Location = new Point(119, 22);
             linkLabel1.Visible = true;
+            textBox1.Visible = false;
         }
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
