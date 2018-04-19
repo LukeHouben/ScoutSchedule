@@ -43,6 +43,8 @@
             this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.uploadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.uploadToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.mailProgrammaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.informatieToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reporteerEenFoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -59,10 +61,10 @@
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.label5 = new System.Windows.Forms.Label();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.uploadToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.mailProgrammaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.label6 = new System.Windows.Forms.Label();
+            this.button4 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.menuStrip1.SuspendLayout();
@@ -74,6 +76,8 @@
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.Controls.Add(this.button4);
+            this.panel1.Controls.Add(this.button3);
             this.panel1.Controls.Add(this.dataGridView1);
             this.panel1.Location = new System.Drawing.Point(12, 30);
             this.panel1.Name = "panel1";
@@ -82,6 +86,7 @@
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -93,9 +98,9 @@
             this.Start,
             this.End,
             this.Category});
-            this.dataGridView1.Location = new System.Drawing.Point(3, 3);
+            this.dataGridView1.Location = new System.Drawing.Point(24, 3);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(453, 308);
+            this.dataGridView1.Size = new System.Drawing.Size(432, 308);
             this.dataGridView1.TabIndex = 0;
             // 
             // Title
@@ -154,14 +159,14 @@
             // newToolStripMenuItem
             // 
             this.newToolStripMenuItem.Name = "newToolStripMenuItem";
-            this.newToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.newToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
             this.newToolStripMenuItem.Text = "Nieuw";
             this.newToolStripMenuItem.Click += new System.EventHandler(this.newToolStripMenuItem_Click);
             // 
             // openToolStripMenuItem
             // 
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
             this.openToolStripMenuItem.Text = "Open";
             this.openToolStripMenuItem.Visible = false;
             this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
@@ -169,7 +174,7 @@
             // saveToolStripMenuItem
             // 
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
             this.saveToolStripMenuItem.Text = "Opslaan";
             this.saveToolStripMenuItem.Visible = false;
             this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
@@ -183,6 +188,20 @@
             this.uploadToolStripMenuItem.Size = new System.Drawing.Size(107, 20);
             this.uploadToolStripMenuItem.Text = "Snelkoppelingen";
             this.uploadToolStripMenuItem.Click += new System.EventHandler(this.uploadToolStripMenuItem_Click);
+            // 
+            // uploadToolStripMenuItem1
+            // 
+            this.uploadToolStripMenuItem1.Name = "uploadToolStripMenuItem1";
+            this.uploadToolStripMenuItem1.Size = new System.Drawing.Size(163, 22);
+            this.uploadToolStripMenuItem1.Text = "Upload naar site";
+            this.uploadToolStripMenuItem1.Click += new System.EventHandler(this.uploadToolStripMenuItem1_Click);
+            // 
+            // mailProgrammaToolStripMenuItem
+            // 
+            this.mailProgrammaToolStripMenuItem.Name = "mailProgrammaToolStripMenuItem";
+            this.mailProgrammaToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
+            this.mailProgrammaToolStripMenuItem.Text = "Mail programma";
+            this.mailProgrammaToolStripMenuItem.Click += new System.EventHandler(this.mailProgrammaToolStripMenuItem_Click);
             // 
             // helpToolStripMenuItem
             // 
@@ -345,24 +364,11 @@
             this.checkBox1.Text = "Voorspel datums";
             this.checkBox1.UseVisualStyleBackColor = true;
             // 
-            // uploadToolStripMenuItem1
-            // 
-            this.uploadToolStripMenuItem1.Name = "uploadToolStripMenuItem1";
-            this.uploadToolStripMenuItem1.Size = new System.Drawing.Size(163, 22);
-            this.uploadToolStripMenuItem1.Text = "Upload naar site";
-            this.uploadToolStripMenuItem1.Click += new System.EventHandler(this.uploadToolStripMenuItem1_Click);
-            // 
-            // mailProgrammaToolStripMenuItem
-            // 
-            this.mailProgrammaToolStripMenuItem.Name = "mailProgrammaToolStripMenuItem";
-            this.mailProgrammaToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
-            this.mailProgrammaToolStripMenuItem.Text = "Mail programma";
-            this.mailProgrammaToolStripMenuItem.Click += new System.EventHandler(this.mailProgrammaToolStripMenuItem_Click);
-            // 
             // linkLabel1
             // 
+            this.linkLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Location = new System.Drawing.Point(120, 347);
+            this.linkLabel1.Location = new System.Drawing.Point(111, 347);
             this.linkLabel1.Name = "linkLabel1";
             this.linkLabel1.Size = new System.Drawing.Size(55, 13);
             this.linkLabel1.TabIndex = 15;
@@ -372,12 +378,40 @@
             // 
             // label6
             // 
+            this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(12, 347);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(127, 13);
             this.label6.TabIndex = 16;
             this.label6.Text = "Laatst Opgeslagen: Nooit";
+            // 
+            // button4
+            // 
+            this.button4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.button4.Enabled = false;
+            this.button4.FlatAppearance.BorderSize = 0;
+            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button4.Image = global::ScoutSchedule.Properties.Resources.remove2;
+            this.button4.Location = new System.Drawing.Point(3, 28);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(18, 23);
+            this.button4.TabIndex = 18;
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click_1);
+            // 
+            // button3
+            // 
+            this.button3.Enabled = false;
+            this.button3.FlatAppearance.BorderSize = 0;
+            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button3.Image = global::ScoutSchedule.Properties.Resources.add;
+            this.button3.Location = new System.Drawing.Point(3, 3);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(18, 23);
+            this.button3.TabIndex = 17;
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // Form1
             // 
@@ -452,6 +486,8 @@
         private System.Windows.Forms.ToolStripMenuItem mailProgrammaToolStripMenuItem;
         private System.Windows.Forms.LinkLabel linkLabel1;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button button3;
     }
 }
 

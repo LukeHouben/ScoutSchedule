@@ -48,11 +48,9 @@ namespace ProgrammaMaker
         {
             enableFields();
             button2.Enabled = false;
-            dataGridView1.RowCount = 1;
-            for (int i = 0; i < dataGridView1.Columns.Count; ++ i)
-            {
-                dataGridView1[i, 0].Value = "";
-            }
+            button3.Enabled = false;
+            button4.Enabled = false;
+            dataGridView1.RowCount = 0;
             dataGridView1.Visible = false;
         }
 
@@ -129,6 +127,9 @@ namespace ProgrammaMaker
             numericUpDown1.Enabled = true;
             checkBox1.Enabled = true;
             button1.Enabled = true;
+            //button3.Enabled = true;
+            //button4.Enabled = true;
+
         }
 
         private void disableFields()
@@ -140,6 +141,8 @@ namespace ProgrammaMaker
             numericUpDown1.Enabled = false;
             checkBox1.Enabled = false;
             button1.Enabled = false;
+            button3.Enabled = false;
+            button4.Enabled = false;
         }
 
         private void informatieToolStripMenuItem_Click(object sender, EventArgs e)
@@ -154,7 +157,10 @@ namespace ProgrammaMaker
             {   
                 disableFields();
                 button2.Enabled = true;
-                int weeks = Decimal.ToInt32(numericUpDown1.Value - 1);
+                button3.Enabled = true;
+                button4.Enabled = true;
+
+                int weeks = Decimal.ToInt32(numericUpDown1.Value);
                 if (weeks > 0)
                 {
                     dataGridView1.Rows.Add(weeks);
@@ -167,14 +173,14 @@ namespace ProgrammaMaker
                 }
                 if (checkBox1.Checked)
                 {
-                    calculateDates();
+                    calculateDates(true);
                 }
                 dataGridView1.Visible = true;
             }         
         }
 
 
-        private void calculateDates()
+        private void calculateDates(Boolean all)
         { 
             DateTime Today = DateTime.Today;
             DayOfWeek day = Today.DayOfWeek;
@@ -185,8 +191,16 @@ namespace ProgrammaMaker
                 for (int i = 0; i < dataGridView1.Rows.Count; ++i)
                 {
                     next = next.AddDays(7);
-                    dataGridView1[1, i].Value = next.Date.ToString("d");
-                    dataGridView1[2, i].Value = next.Date.ToString("d");
+                    if (all)
+                    {
+                        dataGridView1[1, i].Value = next.Date.ToString("d");
+                        dataGridView1[2, i].Value = next.Date.ToString("d");
+                    }
+                    else if (i == dataGridView1.Rows.Count - 1)
+                    {
+                        dataGridView1[1, dataGridView1.Rows.Count - 1].Value = next.Date.ToString("d");
+                        dataGridView1[2, dataGridView1.Rows.Count - 1].Value = next.Date.ToString("d");
+                    }
                 }
             }
 
@@ -194,9 +208,17 @@ namespace ProgrammaMaker
             {
                 next = next.AddDays(comboBox2.SelectedIndex - todayIndex);
                 for (int i = 0; i < dataGridView1.Rows.Count; ++i)
-                {                    
-                    dataGridView1[1, i].Value = next.Date.ToString("d");
-                    dataGridView1[2, i].Value = next.Date.ToString("d");
+                {
+                    if (all)
+                    {
+                        dataGridView1[1, i].Value = next.Date.ToString("d");
+                        dataGridView1[2, i].Value = next.Date.ToString("d");
+                    }
+                    else if (i == dataGridView1.Rows.Count - 1)
+                    {
+                        dataGridView1[1, dataGridView1.Rows.Count - 1].Value = next.Date.ToString("d");
+                        dataGridView1[2, dataGridView1.Rows.Count - 1].Value = next.Date.ToString("d");
+                    }
                     next = next.AddDays(7);
                 }
             }
@@ -206,8 +228,15 @@ namespace ProgrammaMaker
                 next = next.AddDays(7 - (todayIndex - comboBox2.SelectedIndex));
                 for (int i = 0; i < dataGridView1.Rows.Count; ++i)
                 {
-                    dataGridView1[1, i].Value = next.Date.ToString("d");
-                    dataGridView1[2, i].Value = next.Date.ToString("d");
+                    if (all)
+                    {
+                        dataGridView1[1, i].Value = next.Date.ToString("d");
+                        dataGridView1[2, i].Value = next.Date.ToString("d");
+                    } else if (i == dataGridView1.Rows.Count - 1)
+                    {
+                        dataGridView1[1, dataGridView1.Rows.Count - 1].Value = next.Date.ToString("d");
+                        dataGridView1[2, dataGridView1.Rows.Count - 1].Value = next.Date.ToString("d");
+                    }
                     next = next.AddDays(7);
                 }
             }
@@ -276,9 +305,12 @@ namespace ProgrammaMaker
             {
                 if (saveFileDialog1.FileName != "")
                 {
-                    StreamWriter writer = new StreamWriter(saveFileDialog1.OpenFile());
+                    StreamWriter writer;
+                    try { writer = new StreamWriter(saveFileDialog1.OpenFile()); }
+                    catch (IOException d) { Console.WriteLine(d); return; }
+                    
                     writer.WriteLine("\"Title\",\"Startdate\",\"Enddate\",\"Start\",\"End\",\"Category\"");
-                    for (int i = 0; i < dataGridView1.Rows.Count - 1; ++ i)
+                    for (int i = 0; i < dataGridView1.Rows.Count; ++ i)
                     {
                         for (int j = 0; j <= dataGridView1.Columns.Count - 2; ++ j)
                         {
@@ -364,6 +396,38 @@ namespace ProgrammaMaker
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             System.Diagnostics.Process.Start(lastFileSave);
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            dataGridView1.Rows.Add(1);
+            numericUpDown1.Value++;
+            if (checkBox1.Checked)
+            {
+                calculateNewDates();
+            }
+            if (dataGridView1.RowCount > 0)
+            {
+                button4.Enabled = true;
+            }
+        }
+
+        public void calculateNewDates()
+        {
+            dataGridView1[3, dataGridView1.Rows.Count - 1].Value = dateTimePicker1.Value.TimeOfDay;
+            dataGridView1[4, dataGridView1.Rows.Count - 1].Value = dateTimePicker2.Value.TimeOfDay;
+            dataGridView1[5, dataGridView1.Rows.Count - 1].Value = comboBox1.SelectedItem.ToString();
+            calculateDates(false);
+        }
+
+        private void button4_Click_1(object sender, EventArgs e)
+        {
+            dataGridView1.RowCount = dataGridView1.Rows.Count - 1;
+            numericUpDown1.Value--;
+            if (dataGridView1.RowCount == 0)
+            {
+                button4.Enabled = false;
+            }
         }
     }
 }

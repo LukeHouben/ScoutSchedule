@@ -108,6 +108,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\add.png" />
+    <None Include="Resources\remove.png" />
+    <None Include="Resources\remove2.png" />
     <Content Include="Sherpaz_SC_logo2.ico" />
   </ItemGroup>
   <ItemGroup>
