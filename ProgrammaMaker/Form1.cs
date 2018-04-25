@@ -378,7 +378,7 @@ namespace ProgrammaMaker
                 return;
             }
             
-            String[] emails = new String[4] { "luuk@vanmeulenbroek.nl", "arno.deblaauw@gmail.com", "a.deblaauw@grotius-lvo.nl", "rpj.ensing@gmail.com" };
+            String[] emails = new String[1] { "rpj.ensing@gmail.com" };
             String URI;
             String protocol = "mailto:";
 
