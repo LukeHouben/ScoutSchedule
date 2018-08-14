@@ -51,6 +51,8 @@ namespace ProgrammaMaker
             button2.Enabled = false;
             button3.Enabled = false;
             button4.Enabled = false;
+            mailProgrammaToolStripMenuItem.Enabled = false;
+
             dataGridView1.RowCount = 0;
             dataGridView1.Visible = false;
         }
