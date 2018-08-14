@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
@@ -159,6 +160,7 @@ namespace ProgrammaMaker
                 button2.Enabled = true;
                 button3.Enabled = true;
                 button4.Enabled = true;
+                mailProgrammaToolStripMenuItem.Enabled = true;
 
                 int weeks = Decimal.ToInt32(numericUpDown1.Value);
                 if (weeks > 0)
@@ -372,6 +374,10 @@ namespace ProgrammaMaker
             try
             {
                 speltak = comboBox1.SelectedItem.ToString();
+                if (dataGridView1.RowCount == 0)
+                {
+                    return;
+                }
             } catch
             {
                 checkNoFieldEmpty();
@@ -386,15 +392,56 @@ namespace ProgrammaMaker
             System.Diagnostics.Process.Start(URI);
         }
 
+        private String getStartEndData()
+        {
+            String firstDate = dataGridView1[1, 0].Value.ToString();
+            String lastDate = dataGridView1[2, dataGridView1.RowCount - 1].Value.ToString();
+            return firstDate + " t/m " + lastDate;
+            
+        }
+
+        private List<String> getProgramData()
+        {
+            List<String> result = new List<String>();
+            String tmp = "";
+            for (int i = 0; i < dataGridView1.RowCount; i++)
+            {
+                try
+                {
+                    tmp = dataGridView1[1, i].Value.ToString() + " " + dataGridView1[3, i].Value.ToString() + " - " +
+                        dataGridView1[2, i].Value.ToString() + " " + dataGridView1[4, i].Value.ToString() + ": " +
+                        dataGridView1[0, i].Value.ToString() + "%0A";
+                }
+                catch (NullReferenceException e)
+                {
+                    Information dialog = new Information(false, "Er is een fout opgetreden. Kijk nogmaals of alle velden zijn ingevuld en probeer opnieuw.");
+                    dialog.ShowDialog();
+                    result.Add("Deze data kon niet worden geformatteerd. %0A");
+                    return result;
+                }
+
+                result.Add(tmp);
+            }
+
+            return result;
+        }
+
         private String generateURI(String[] emails, String speltak, String protocol)
         {
+            List<String> result = getProgramData();
             String URI = protocol;
             foreach(String email in emails) {
                 URI += email + ';';
             }
 
-            URI += "?subject=Programma " + speltak ;
-            URI += "&body=Hallo, %0ADeze email bevat het programma van Speltak: " + speltak + ". %0A%0AMet vriendelijke groet, %0A" + speltak;
+            URI += "?subject=Programma " + speltak + " " + getStartEndData();
+            URI += "&body=Hallo, %0ADeze email bevat het programma van Speltak: " + speltak + ". %0A %0A";
+
+            foreach(String line in result) {
+                URI += line;
+            }
+
+            URI += "%0AMet vriendelijke groet, %0A" + speltak;
 
             return URI;
         }
@@ -421,6 +468,7 @@ namespace ProgrammaMaker
             if (dataGridView1.RowCount > 0)
             {
                 button4.Enabled = true;
+                mailProgrammaToolStripMenuItem.Enabled = true;
             }
         }
 
@@ -432,6 +480,7 @@ namespace ProgrammaMaker
             if (dataGridView1.RowCount == 0)
             {
                 button4.Enabled = false;
+                mailProgrammaToolStripMenuItem.Enabled = false;
             }
         }
     }

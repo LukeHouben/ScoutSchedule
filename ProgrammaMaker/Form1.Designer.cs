@@ -30,6 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.button4 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.Title = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Startdate = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -63,8 +65,6 @@
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.label6 = new System.Windows.Forms.Label();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.menuStrip1.SuspendLayout();
@@ -83,6 +83,33 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(459, 314);
             this.panel1.TabIndex = 0;
+            // 
+            // button4
+            // 
+            this.button4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.button4.Enabled = false;
+            this.button4.FlatAppearance.BorderSize = 0;
+            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button4.Image = global::ScoutSchedule.Properties.Resources.remove2;
+            this.button4.Location = new System.Drawing.Point(3, 28);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(18, 23);
+            this.button4.TabIndex = 18;
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click_1);
+            // 
+            // button3
+            // 
+            this.button3.Enabled = false;
+            this.button3.FlatAppearance.BorderSize = 0;
+            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button3.Image = global::ScoutSchedule.Properties.Resources.add;
+            this.button3.Location = new System.Drawing.Point(3, 3);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(18, 23);
+            this.button3.TabIndex = 17;
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // dataGridView1
             // 
@@ -198,6 +225,7 @@
             // 
             // mailProgrammaToolStripMenuItem
             // 
+            this.mailProgrammaToolStripMenuItem.Enabled = false;
             this.mailProgrammaToolStripMenuItem.Name = "mailProgrammaToolStripMenuItem";
             this.mailProgrammaToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
             this.mailProgrammaToolStripMenuItem.Text = "Mail programma";
@@ -357,11 +385,11 @@
             // 
             this.checkBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(484, 238);
+            this.checkBox1.Location = new System.Drawing.Point(484, 228);
             this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(104, 17);
+            this.checkBox1.Size = new System.Drawing.Size(107, 17);
             this.checkBox1.TabIndex = 14;
-            this.checkBox1.Text = "Voorspel datums";
+            this.checkBox1.Text = "Genereer datums";
             this.checkBox1.UseVisualStyleBackColor = true;
             // 
             // linkLabel1
@@ -385,33 +413,6 @@
             this.label6.Size = new System.Drawing.Size(127, 13);
             this.label6.TabIndex = 16;
             this.label6.Text = "Laatst Opgeslagen: Nooit";
-            // 
-            // button4
-            // 
-            this.button4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.button4.Enabled = false;
-            this.button4.FlatAppearance.BorderSize = 0;
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.Image = global::ScoutSchedule.Properties.Resources.remove2;
-            this.button4.Location = new System.Drawing.Point(3, 28);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(18, 23);
-            this.button4.TabIndex = 18;
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click_1);
-            // 
-            // button3
-            // 
-            this.button3.Enabled = false;
-            this.button3.FlatAppearance.BorderSize = 0;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Image = global::ScoutSchedule.Properties.Resources.add;
-            this.button3.Location = new System.Drawing.Point(3, 3);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(18, 23);
-            this.button3.TabIndex = 17;
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // Form1
             // 
