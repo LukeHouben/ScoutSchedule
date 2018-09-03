@@ -9,6 +9,7 @@ namespace ProgrammaMaker
     public partial class Form1 : Form
     {
         protected String lastFileSave;
+        protected String version = "1.1.1.0";
 
         public Form1()
         {
@@ -17,6 +18,7 @@ namespace ProgrammaMaker
             dataGridView1.Visible = false;
             addGroupsToList();
             addDaysToList();
+            checkForUpdate();
         }
 
         private void addGroupsToList()
@@ -484,6 +486,26 @@ namespace ProgrammaMaker
                 button4.Enabled = false;
                 mailProgrammaToolStripMenuItem.Enabled = false;
             }
+        }
+
+        private void checkForUpdate()
+        {
+            try
+            {
+                System.Net.WebClient wc = new System.Net.WebClient();
+                wc.Headers.Add("User-Agent: Other");
+                string webData = wc.DownloadString("https://lukehouben.nl/shared/appVersion.txt");
+                if (!webData.Equals(version))
+                {
+                    Information updateAvailable = new Information(false, "Er is een update beschikbaar! Download de laatste versie nu!");
+                    updateAvailable.ShowDialog();
+                }
+            } catch
+            {
+                
+            }
+
+            
         }
     }
 }
