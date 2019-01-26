@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Globalization;
 using System.IO;
 using System.Windows.Forms;
 
@@ -9,7 +10,7 @@ namespace ProgrammaMaker
     public partial class Form1 : Form
     {
         protected String lastFileSave;
-        protected String version = "1.1.1.0";
+        protected String version = "1.0.2";
 
         public Form1()
         {
@@ -61,7 +62,43 @@ namespace ProgrammaMaker
 
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            OpenFileDialog openFileDialog1 = new OpenFileDialog();
+            openFileDialog1.Filter = "CSV Bestand | *.csv";
+            openFileDialog1.Title = "Selecteer het CSV bestand...";
 
+            // Show the Dialog.  
+            // If the user clicked OK in the dialog and  
+            // a .CUR file was selected, open it.  
+            if (openFileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                // Assign the cursor in the Stream to the Form's Cursor property.               
+                newToolStripMenuItem_Click(sender, e);
+                StreamReader file = new StreamReader(openFileDialog1.FileName);
+                String line = file.ReadLine();
+                int count = 0;
+                while ((line = file.ReadLine()) != null)
+                {
+                    String[] activities = line.Trim('"').Split(new String[] { "\",\"" }, StringSplitOptions.None);
+                    dataGridView1.Rows.Add(1);
+                    count++;
+                    for (int i = 0; i < activities.Length; i++)
+                    {
+                        dataGridView1[i, dataGridView1.Rows.Count - 1].Value = activities[i];
+                    }
+                }
+                comboBox1.SelectedItem = dataGridView1[dataGridView1.Columns.Count - 1, dataGridView1.Rows.Count - 1].Value;
+                //System.Console.WriteLine(dataGridView1[dataGridView1.Columns.Count - 1, dataGridView1.Rows.Count - 1].Value);
+                //comboBox1_SelectedIndexChanged(sender, e);
+                numericUpDown1.Value = count;
+                disableFields();
+                button2.Enabled = true;
+                button3.Enabled = true;
+                button4.Enabled = true;
+                mailProgrammaToolStripMenuItem.Enabled = true;
+                checkBox1.Checked = true;
+                dataGridView1.Visible = true;
+                file.Close();
+            }
         }
 
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
@@ -132,8 +169,6 @@ namespace ProgrammaMaker
             numericUpDown1.Enabled = true;
             checkBox1.Enabled = true;
             button1.Enabled = true;
-            //button3.Enabled = true;
-            //button4.Enabled = true;
 
         }
 
@@ -199,13 +234,18 @@ namespace ProgrammaMaker
                     next = next.AddDays(7);
                     if (all)
                     {
-                        dataGridView1[1, i].Value = next.Date.ToString("d");
-                        dataGridView1[2, i].Value = next.Date.ToString("d");
+                        dataGridView1[1, i].Value = next.Date.ToString("dd-MM-yyyy");
+                        dataGridView1[2, i].Value = next.Date.ToString("dd-MM-yyyy");
                     }
                     else if (i == dataGridView1.Rows.Count - 1)
                     {
-                        dataGridView1[1, dataGridView1.Rows.Count - 1].Value = next.Date.ToString("d");
-                        dataGridView1[2, dataGridView1.Rows.Count - 1].Value = next.Date.ToString("d");
+                        if (dataGridView1.Rows.Count != 0)
+                        {
+                            next = DateTime.ParseExact(dataGridView1[1, dataGridView1.Rows.Count - 2].Value.ToString(), "dd-MM-yyyy", CultureInfo.InvariantCulture).AddDays(7);
+                        }
+
+                        dataGridView1[1, dataGridView1.Rows.Count - 1].Value = next.Date.ToString("dd-MM-yyyy");
+                        dataGridView1[2, dataGridView1.Rows.Count - 1].Value = next.Date.ToString("dd-MM-yyyy");
                     }
                 }
             }
@@ -217,13 +257,15 @@ namespace ProgrammaMaker
                 {
                     if (all)
                     {
-                        dataGridView1[1, i].Value = next.Date.ToString("d");
-                        dataGridView1[2, i].Value = next.Date.ToString("d");
+                        dataGridView1[1, i].Value = next.Date.ToString("dd-MM-yyyy");
+                        dataGridView1[2, i].Value = next.Date.ToString("dd-MM-yyyy");
                     }
                     else if (i == dataGridView1.Rows.Count - 1)
                     {
-                        dataGridView1[1, dataGridView1.Rows.Count - 1].Value = next.Date.ToString("d");
-                        dataGridView1[2, dataGridView1.Rows.Count - 1].Value = next.Date.ToString("d");
+                        next = DateTime.ParseExact(dataGridView1[1, dataGridView1.Rows.Count - 2].Value.ToString(), "dd-MM-yyyy", CultureInfo.InvariantCulture).AddDays(7);
+
+                        dataGridView1[1, dataGridView1.Rows.Count - 1].Value = next.Date.ToString("dd-MM-yyyy");
+                        dataGridView1[2, dataGridView1.Rows.Count - 1].Value = next.Date.ToString("dd-MM-yyyy");
                     }
                     next = next.AddDays(7);
                 }
@@ -236,13 +278,16 @@ namespace ProgrammaMaker
                 {
                     if (all)
                     {
-                        dataGridView1[1, i].Value = next.Date.ToString("d");
-                        dataGridView1[2, i].Value = next.Date.ToString("d");
+                        dataGridView1[1, i].Value = next.Date.ToString("dd-MM-yyyy");
+                        dataGridView1[2, i].Value = next.Date.ToString("dd-MM-yyyy");
                     }
                     else if (i == dataGridView1.Rows.Count - 1)
                     {
-                        dataGridView1[1, dataGridView1.Rows.Count - 1].Value = next.Date.ToString("d");
-                        dataGridView1[2, dataGridView1.Rows.Count - 1].Value = next.Date.ToString("d");
+                        if (dataGridView1.Rows.Count >= 2)
+                            next = DateTime.ParseExact(dataGridView1[1, dataGridView1.Rows.Count - 2].Value.ToString(), "dd-MM-yyyy", CultureInfo.CurrentCulture).AddDays(7);
+
+                        dataGridView1[1, dataGridView1.Rows.Count - 1].Value = next.Date.ToString("dd-MM-yyyy");
+                        dataGridView1[2, dataGridView1.Rows.Count - 1].Value = next.Date.ToString("dd-MM-yyyy");
                     }
                     next = next.AddDays(7);
                 }
@@ -388,7 +433,7 @@ namespace ProgrammaMaker
                 return;
             }
             
-            String[] emails = new String[1] { "rpj.ensing@gmail.com" };
+            String[] emails = new String[2] { "rpj.ensing@gmail.com", "luuk@vanmeulenbroek.nl" };
             String URI;
             String protocol = "mailto:";
 
@@ -481,10 +526,9 @@ namespace ProgrammaMaker
             dataGridView1.RowCount = dataGridView1.Rows.Count - 1;
             numericUpDown1.Value--;
 
-            if (dataGridView1.RowCount == 0)
+            if (dataGridView1.RowCount == 1)
             {
                 button4.Enabled = false;
-                mailProgrammaToolStripMenuItem.Enabled = false;
             }
         }
 
