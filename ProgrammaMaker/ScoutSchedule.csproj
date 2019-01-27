@@ -149,6 +149,9 @@
     <None Include="Resources\add.png" />
     <None Include="Resources\remove.png" />
     <None Include="Resources\remove2.png" />
+    <None Include="Resources\Icon1.ico" />
+    <None Include="obj\Sherpaz_SC_logo2.png" />
+    <None Include="obj\Sherpaz_SC_logo2.ico" />
     <Content Include="Sherpaz_SC_logo2.ico" />
   </ItemGroup>
   <ItemGroup>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ScoutSchedule;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Globalization;
@@ -10,7 +11,7 @@ namespace ProgrammaMaker
     public partial class Form1 : Form
     {
         protected String lastFileSave;
-        protected String version = "1.0.2";
+        protected String version = "1.2.0";
 
         public Form1()
         {
@@ -215,6 +216,11 @@ namespace ProgrammaMaker
                 if (checkBox1.Checked)
                 {
                     calculateDates(true);
+                }
+
+                if (numericUpDown1.Value == 1)
+                {
+                    button4.Enabled = false;
                 }
                 dataGridView1.Visible = true;
             }         
@@ -443,10 +449,15 @@ namespace ProgrammaMaker
 
         private String getStartEndData()
         {
-            String firstDate = dataGridView1[1, 0].Value.ToString();
-            String lastDate = dataGridView1[2, dataGridView1.RowCount - 1].Value.ToString();
-            return firstDate + " t/m " + lastDate;
-            
+            try
+            {
+                String firstDate = dataGridView1[1, 0].Value.ToString();
+                String lastDate = dataGridView1[2, dataGridView1.RowCount - 1].Value.ToString();
+                return firstDate + " t/m " + lastDate;
+            } catch (Exception ex)
+            {
+                return "";
+            }
         }
 
         private List<String> getProgramData()
@@ -536,17 +547,27 @@ namespace ProgrammaMaker
         {
             try
             {
+                //First remove old exe if available
+                String exePath = Application.ExecutablePath;
+
+                if (File.Exists(exePath + ".bak"))
+                {
+                    File.SetAttributes(exePath, FileAttributes.Normal);
+                    File.Delete(exePath + ".bak");
+                }
+
                 System.Net.WebClient wc = new System.Net.WebClient();
                 wc.Headers.Add("User-Agent: Other");
                 string webData = wc.DownloadString("https://lukehouben.nl/shared/appVersion.txt");
                 if (!webData.Equals(version))
                 {
-                    Information updateAvailable = new Information(false, "Er is een update beschikbaar! Download de laatste versie nu!");
+                    Update updateAvailable = new Update(version, webData);
                     updateAvailable.ShowDialog();
                 }
-            } catch
+            } catch (Exception ex)
             {
-                
+                Information dialog = new Information(false, "De automatische update(check) kon niet worden voltooid. Kijk online voor een eventuele nieuwe versie!");
+                dialog.ShowDialog();
             }
 
             
