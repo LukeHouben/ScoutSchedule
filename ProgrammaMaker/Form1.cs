@@ -11,7 +11,14 @@ namespace ProgrammaMaker
     public partial class Form1 : Form
     {
         protected String lastFileSave;
-        protected String version = "1.2.0";
+        protected String version = "1.2.1";
+
+        protected override void OnFormClosing(FormClosingEventArgs e)
+        {
+            var confirmResult = MessageBox.Show("Weet je zeker dat je het programma wilt verlaten?", "Afsluiten", MessageBoxButtons.YesNo);
+
+            e.Cancel = (confirmResult == DialogResult.No);
+        }
 
         public Form1()
         {
@@ -51,6 +58,15 @@ namespace ProgrammaMaker
 
         private void newToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            if (comboBox1.Enabled == false)
+            {
+                var confirmResult = MessageBox.Show("Dit zal alle reeds ingevulde data wissen. Weet je zeker dat je door wilt gaan?", "Nieuw/Openen", MessageBoxButtons.YesNo);
+                if (confirmResult != DialogResult.Yes)
+                {
+                    return;
+                }
+            }
+            
             enableFields();
             button2.Enabled = false;
             button3.Enabled = false;
@@ -67,16 +83,14 @@ namespace ProgrammaMaker
             openFileDialog1.Filter = "CSV Bestand | *.csv";
             openFileDialog1.Title = "Selecteer het CSV bestand...";
 
-            // Show the Dialog.  
-            // If the user clicked OK in the dialog and  
-            // a .CUR file was selected, open it.  
+            
             if (openFileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-            {
-                // Assign the cursor in the Stream to the Form's Cursor property.               
+            {                              
                 newToolStripMenuItem_Click(sender, e);
                 StreamReader file = new StreamReader(openFileDialog1.FileName);
                 String line = file.ReadLine();
                 int count = 0;
+
                 while ((line = file.ReadLine()) != null)
                 {
                     String[] activities = line.Trim('"').Split(new String[] { "\",\"" }, StringSplitOptions.None);
@@ -88,8 +102,7 @@ namespace ProgrammaMaker
                     }
                 }
                 comboBox1.SelectedItem = dataGridView1[dataGridView1.Columns.Count - 1, dataGridView1.Rows.Count - 1].Value;
-                //System.Console.WriteLine(dataGridView1[dataGridView1.Columns.Count - 1, dataGridView1.Rows.Count - 1].Value);
-                //comboBox1_SelectedIndexChanged(sender, e);
+                
                 numericUpDown1.Value = count;
                 disableFields();
                 button2.Enabled = true;
@@ -188,7 +201,7 @@ namespace ProgrammaMaker
 
         private void informatieToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Information info = new Information();
+            Information info = new Information(version);
             info.ShowDialog();
         }
 
@@ -464,12 +477,16 @@ namespace ProgrammaMaker
         {
             List<String> result = new List<String>();
             String tmp = "";
+
             for (int i = 0; i < dataGridView1.RowCount; i++)
             {
                 try
                 {
-                    tmp = dataGridView1[1, i].Value.ToString() + " " + dataGridView1[3, i].Value.ToString() + " - " +
-                        dataGridView1[2, i].Value.ToString() + " " + dataGridView1[4, i].Value.ToString() + ": " +
+                    String[] startTime = dataGridView1[3, i].Value.ToString().Split(':');
+                    String[] endTime = dataGridView1[4, i].Value.ToString().Split(':');
+
+                    tmp = dataGridView1[1, i].Value.ToString() + " " + startTime[0] + ":" + startTime[1] + " - " +
+                        dataGridView1[2, i].Value.ToString() + " " + endTime[0] + ":" + endTime[1] + ": " +
                         dataGridView1[0, i].Value.ToString() + "%0A";
                 }
                 catch (NullReferenceException e)
@@ -495,13 +512,13 @@ namespace ProgrammaMaker
             }
 
             URI += "?subject=Programma " + speltak + " " + getStartEndData();
-            URI += "&body=Hallo, %0ADeze email bevat het programma van Speltak: " + speltak + ". %0A %0A";
+            URI += "&body=Beste, %0A%0ADeze email bevat het programma van de " + speltak + ". %0A %0A";
 
-            foreach(String line in result) {
+            foreach (String line in result) {
                 URI += line;
             }
 
-            URI += "%0AMet vriendelijke groet, %0A" + speltak;
+            URI += "%0AMet vriendelijke groet, %0A%0ADe " + speltak;
 
             return URI;
         }
@@ -571,6 +588,11 @@ namespace ProgrammaMaker
             }
 
             
+        }
+
+        private void afsluitenToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

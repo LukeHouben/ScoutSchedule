@@ -16,6 +16,8 @@ namespace ProgrammaMaker
         {
             InitializeComponent();
             label1.Visible = false;
+            label3.Visible = false;
+            label4.Visible = false;
             label2.Location = new Point(20, 35);
             textBox1.Visible = false;
             if (success)
@@ -30,14 +32,17 @@ namespace ProgrammaMaker
             linkLabel1.Visible = false;
         }
 
-        public Information()
+        public Information(String version)
         {
             InitializeComponent();
             label1.Visible = true;
-            label2.Text = "© 2018";
+            label3.Visible = true;
+            label4.Visible = true;
+            label2.Text = "© 2018-2019";
             label2.Location = new Point(119, 22);
             linkLabel1.Visible = true;
             textBox1.Visible = false;
+            label4.Text = version;
         }
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)

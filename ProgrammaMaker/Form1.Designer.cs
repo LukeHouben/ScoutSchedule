@@ -65,6 +65,10 @@
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.label6 = new System.Windows.Forms.Label();
+            this.afsluitenToolStripMenuItem = new System.Windows.Forms.ToolStripSeparator();
+            this.afsluitenToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.menuStrip1.SuspendLayout();
@@ -178,7 +182,9 @@
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.newToolStripMenuItem,
             this.openToolStripMenuItem,
-            this.saveToolStripMenuItem});
+            this.saveToolStripMenuItem,
+            this.afsluitenToolStripMenuItem,
+            this.afsluitenToolStripMenuItem1});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
             this.fileToolStripMenuItem.Text = "Bestand";
@@ -194,7 +200,7 @@
             // 
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
             this.openToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.openToolStripMenuItem.Text = "Open";
+            this.openToolStripMenuItem.Text = "Openen";
             this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
             // 
             // saveToolStripMenuItem
@@ -209,6 +215,7 @@
             // 
             this.uploadToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.uploadToolStripMenuItem1,
+            this.toolStripMenuItem2,
             this.mailProgrammaToolStripMenuItem});
             this.uploadToolStripMenuItem.Name = "uploadToolStripMenuItem";
             this.uploadToolStripMenuItem.Size = new System.Drawing.Size(107, 20);
@@ -234,6 +241,7 @@
             // 
             this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.informatieToolStripMenuItem,
+            this.toolStripMenuItem1,
             this.reporteerEenFoutToolStripMenuItem});
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
             this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
@@ -242,15 +250,15 @@
             // informatieToolStripMenuItem
             // 
             this.informatieToolStripMenuItem.Name = "informatieToolStripMenuItem";
-            this.informatieToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
+            this.informatieToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
             this.informatieToolStripMenuItem.Text = "Informatie";
             this.informatieToolStripMenuItem.Click += new System.EventHandler(this.informatieToolStripMenuItem_Click);
             // 
             // reporteerEenFoutToolStripMenuItem
             // 
             this.reporteerEenFoutToolStripMenuItem.Name = "reporteerEenFoutToolStripMenuItem";
-            this.reporteerEenFoutToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
-            this.reporteerEenFoutToolStripMenuItem.Text = "Raporteer een fout";
+            this.reporteerEenFoutToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
+            this.reporteerEenFoutToolStripMenuItem.Text = "Rapporteer een fout";
             this.reporteerEenFoutToolStripMenuItem.Click += new System.EventHandler(this.reporteerEenFoutToolStripMenuItem_Click);
             // 
             // label1
@@ -413,6 +421,28 @@
             this.label6.TabIndex = 16;
             this.label6.Text = "Laatst Opgeslagen: Nooit";
             // 
+            // afsluitenToolStripMenuItem
+            // 
+            this.afsluitenToolStripMenuItem.Name = "afsluitenToolStripMenuItem";
+            this.afsluitenToolStripMenuItem.Size = new System.Drawing.Size(149, 6);
+            // 
+            // afsluitenToolStripMenuItem1
+            // 
+            this.afsluitenToolStripMenuItem1.Name = "afsluitenToolStripMenuItem1";
+            this.afsluitenToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.afsluitenToolStripMenuItem1.Text = "Afsluiten";
+            this.afsluitenToolStripMenuItem1.Click += new System.EventHandler(this.afsluitenToolStripMenuItem1_Click);
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(176, 6);
+            // 
+            // toolStripMenuItem2
+            // 
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(160, 6);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -488,6 +518,10 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.ToolStripSeparator afsluitenToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem afsluitenToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem2;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
     }
 }
 
