@@ -11,7 +11,7 @@ namespace ProgrammaMaker
     public partial class Form1 : Form
     {
         protected String lastFileSave;
-        protected String version = "1.2.1";
+        protected String version = "1.2.2";
 
         protected override void OnFormClosing(FormClosingEventArgs e)
         {
@@ -93,6 +93,9 @@ namespace ProgrammaMaker
 
                 while ((line = file.ReadLine()) != null)
                 {
+                    while (line.Contains("\"\""))
+                        line = line.Replace("\"\"", "\" \"");
+
                     String[] activities = line.Trim('"').Split(new String[] { "\",\"" }, StringSplitOptions.None);
                     dataGridView1.Rows.Add(1);
                     count++;

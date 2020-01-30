@@ -52,7 +52,7 @@
     <ApplicationIcon>Sherpaz_SC_logo2.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>4F3424ECD6ACFF8D6C3ED72EE9C17BC7EBA1F087</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>560DD02C6EAB4E0B11E0E4006D17EF89EBE64DB9</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
     <ManifestKeyFile>
@@ -74,7 +74,7 @@
     <SignAssembly>true</SignAssembly>
   </PropertyGroup>
   <PropertyGroup>
-    <AssemblyOriginatorKeyFile>ScoutSchedule_TemporaryKey.pfx</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>ScoutSchedule_2_TemporaryKey.pfx</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -140,6 +140,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <None Include="ScoutSchedule_1_TemporaryKey.pfx" />
+    <None Include="ScoutSchedule_2_TemporaryKey.pfx" />
     <None Include="ScoutSchedule_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
